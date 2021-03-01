@@ -1,0 +1,114 @@
+<h2 class="listado">Listado de vehículos a reparar</h2>
+<div *ngIf="!vehiculos.length"> 
+    No hay vehículos para reparar
+</div>
+<div>
+    <article *ngIf="vehiculos && vehiculos.length>0"> <!--We check if the "vehiculos" array is not null-->
+            <form [formGroup]="matriculasForm">
+                
+                <input formControlName="mat" type="text" maxlength="7" placeholder="Busca por matricula">
+                <button (click)="buscarVehiculos()" class="buscarV">Buscar</button>
+            </form>
+
+            <form [formGroup]="matriculasOutForm">
+                
+                <input formControlName="matt" type="text" maxlength="7" placeholder="Elimina por matricula">
+                <button (click)="eliminar1()" class="elim">Eliminar</button>
+            </form>
+
+            <button (click)="buscadosA0()" class="vertodo">Ver todo</button>
+
+        <hr size="1px" color="grey"/>
+    </article>
+    
+    <article *ngIf="buscados && buscados.length>0"> <!--We check if the "buscados" array is not null-->
+        <article *ngFor="let vehiculo of buscados"> <!--If "buscados" is not null, we show the vehicle that is searched-->
+            <table class="tabla">
+                <tr class="titulos">
+                    <!--<th>ID</th>-->
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Matricula</th>
+                    <th>Tipo</th>
+                    <th>Color</th>
+                </tr>
+                <tr class="argumentos">
+                    <td>
+                        {{vehiculo.marca}}
+                    </td>
+                    <td>
+                        {{vehiculo.modelo}}
+                    </td>
+                    <td>
+                        {{vehiculo.matricula}}
+                    </td>
+                    <td>
+                        {{vehiculo.tipoVehiculo}}
+                    </td>
+                    <td>
+                        {{vehiculo.colorVehiculo}}
+                    </td>
+                    
+                </tr>
+    
+            </table>
+            <table>
+                <tr class="averiaTabla">
+                    <th class="cent">Averia</th>
+                </tr>
+                 <tr>
+                    <td class="izq">{{vehiculo.averia}}</td>
+                </tr>
+            </table>
+    
+            <hr size="2px" color="black"/>
+    
+        </article>
+    </article>
+
+    <article *ngIf="buscados.length==0"> <!--If "buscados" is null, we show all the vehicles that are registered-->
+        <article *ngFor="let vehiculo of vehiculos">
+            <table class="tabla">
+                <tr class="titulos">
+                    <!--<th>ID</th>-->
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Matricula</th>
+                    <th>Tipo</th>
+                    <th>Color</th>
+                </tr>
+                <tr class="argumentos">
+                    <td>
+                        {{vehiculo.marca}}
+                    </td>
+                    <td>
+                        {{vehiculo.modelo}}
+                    </td>
+                    <td>
+                        {{vehiculo.matricula}}
+                    </td>
+                    <td>
+                        {{vehiculo.tipoVehiculo}}
+                    </td>
+                    <td>
+                        {{vehiculo.colorVehiculo}}
+                    </td>
+                    
+                </tr>
+    
+            </table>
+            <table>
+                <tr class="averiaTabla">
+                    <th class="cent">Averia</th>
+                </tr>
+                 <tr>
+                    <td class="izq">{{vehiculo.averia}}</td>
+                </tr>
+            </table>
+    
+            <hr size="2px" color="black"/>
+    
+        </article>
+    </article>
+    
+</div>

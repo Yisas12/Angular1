@@ -1,0 +1,51 @@
+<h2 class="title2">Dar de alta un vehículo</h2>
+<div class="formulario">
+
+    <div class="one-half">
+        <span>
+            <label for="marca">Marca </label>
+            <select [(ngModel)]="vehiculo.marca" required>
+                <option *ngFor="let marca of marcas" value="{{marca.id}}"> {{marca.id}}</option>
+            </select>
+        </span>
+        <br/>
+
+        <span>
+            <label for="modelo"> Modelo </label>
+            <input type="text" [(ngModel)]="vehiculo.modelo" placeholder="Escribe el modelo">
+        </span>
+        <br/>
+
+        <span>
+            <label for="matricula">Matricula </label>
+            <input type="text" [(ngModel)]="vehiculo.matricula" placeholder="Escribe la matrícula">
+        </span>
+        <br/>
+
+        <span>
+            <label for="tipo">Tipo </label>
+            <select [(ngModel)]="vehiculo.tipoVehiculo" required>
+                <option *ngFor="let tipo of tipos" value="{{tipo.id}}"> {{tipo.id}}</option>
+            </select>
+        </span>
+        <br/>
+
+        <span>
+            <label for="color">Color </label>
+            <select [(ngModel)]="vehiculo.colorVehiculo" required>
+                <option *ngFor="let color of colores" value="{{color.id}}"> {{color.id}}</option>
+            </select>
+        </span>
+    </div>
+
+    <div class="second-half">
+        <span class="textAreaTotal">
+            <label for="Avería">Avería </label>
+            <textarea [(ngModel)]="vehiculo.averia" class="textAreaParc" placeholder="Escribe la avería" maxlength="150"></textarea>
+        </span>
+    </div>
+</div>
+
+<p>
+    <button class="altaV" (click)="this.nuevoVehiculo()">Alta vehículo</button>
+</p>
